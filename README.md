@@ -11,14 +11,14 @@
 
 Este projeto implementa um **validador básico de código C**, utilizando as ferramentas clássicas de compiladores:
 
-- 🔹 **Flex** → responsável pela análise léxica  
-- 🔹 **Bison** → responsável pela análise sintática  
+* 🔹 **Flex** → responsável pela análise léxica
+* 🔹 **Bison** → responsável pela análise sintática
 
 Além disso, o sistema realiza **validações semânticas básicas**, como:
 
-- ✔️ Verificação de variável declarada antes do uso  
-- ✔️ Prevenção de redeclaração  
-- ✔️ Compatibilidade de tipos em atribuições  
+* ✔️ Verificação de variável declarada antes do uso
+* ✔️ Prevenção de redeclaração
+* ✔️ Compatibilidade de tipos em atribuições
 
 ---
 
@@ -26,48 +26,64 @@ Além disso, o sistema realiza **validações semânticas básicas**, como:
 
 O fluxo do programa segue a arquitetura clássica de compiladores:
 
+```
 Código C → Análise Léxica → Análise Sintática → Validação Semântica
+```
 
 ### 🔹 Análise Léxica (Flex)
+
 Transforma o código em tokens:
 
+```
 int idade;
 → TIPO ID SEMICOLON
-
+```
 
 ### 🔹 Análise Sintática (Bison)
+
 Valida se a estrutura é correta:
 
+```
 TIPO ID SEMICOLON ✔ válido
 ID = NUM ; ✔ válido
+```
 
 ### 🔹 Validação Semântica
+
 Verifica o sentido do código:
 
+```
 int x;
 x = "Lucas"; ❌ (erro de tipo)
+```
 
+---
 
 ## 🚀 Tecnologias utilizadas
 
-- 🟦 Linguagem C  
-- 🟩 Flex (Lexical Analyzer)  
-- 🟧 Bison (Parser Generator)  
-- 🐧 WSL (Ubuntu)  
-- ⚙️ GCC  
+* 🟦 Linguagem C
+* 🟩 Flex (Lexical Analyzer)
+* 🟧 Bison (Parser Generator)
+* 🐧 WSL (Ubuntu)
+* ⚙️ GCC
 
+---
 
 ## 📂 Estrutura do projeto
 
+```
 sql-validator-flex-bison/
 │
 ├── lexer.l
 ├── parser.y
 ├── exemplos/
-│ ├── validos.txt
-│ └── invalidos.txt
+│   ├── validos.txt
+│   └── invalidos.txt
 ├── README.md
 └── .gitignore
+```
+
+---
 
 ## ⚙️ Como executar o projeto
 
@@ -78,70 +94,95 @@ No WSL (Ubuntu):
 ```bash
 sudo apt update
 sudo apt install flex bison gcc
+```
+
+---
 
 ### 2. Gerar o parser (Bison)
 
+```bash
 bison -d parser.y
+```
 
 Arquivos gerados:
 
-parser.tab.c
-parser.tab.h
+* parser.tab.c
+* parser.tab.h
+
+---
 
 ### 3. Gerar o analisador léxico (Flex)
 
+```bash
 flex lexer.l
+```
 
 Arquivo gerado:
 
-lex.yy.c
+* lex.yy.c
+
+---
 
 ### 4. Compilar
 
+```bash
 gcc parser.tab.c lex.yy.c -o validadorparser -lfl
+```
+
+---
 
 ### 5. Executar
 
+```bash
 ./validadorparser
+```
 
 Finalize a entrada com:
 
+```
 Ctrl + D
+```
 
+---
 
+## ✅ Validações implementadas
 
-## Validações implementadas
+* ✔️ Declaração de variáveis (int, float, char)
+* ✔️ Atribuições numéricas e de string
+* ✔️ Uso correto de variáveis
+* ✔️ Verificação de tipos
+* ✔️ Tabela de símbolos
 
-✔️ Declaração de variáveis (int, float, char)
-✔️ Atribuições numéricas e de string
-✔️ Uso correto de variáveis
-✔️ Verificação de tipos
-✔️ Tabela de símbolos
+---
 
-## Limitações
+## ⚠️ Limitações
 
 Este projeto NÃO implementa toda a linguagem C.
 
 Não suporta:
 
-❌ if, for, while
-❌ funções
-❌ ponteiros
-❌ arrays
-❌ expressões complexas
+* ❌ if, for, while
+* ❌ funções
+* ❌ ponteiros
+* ❌ arrays
+* ❌ expressões complexas
 
-    O foco é educacional, demonstrando conceitos de compiladores.
+> O foco é educacional, demonstrando conceitos de compiladores.
 
-## Objetivo
+---
+
+## 🎯 Objetivo
 
 Demonstrar na prática o funcionamento de um sistema de validação de código baseado em:
 
-análise léxica
-análise sintática
-análise semântica básica
+* análise léxica
+* análise sintática
+* análise semântica básica
 
-## Observação
+---
+
+## 📎 Observação
 
 Projeto desenvolvido para fins acadêmicos na disciplina de:
 
-Teoria da Computação e Compiladores
+**Teoria da Computação e Compiladores**
